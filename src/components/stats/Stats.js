@@ -28,9 +28,9 @@ export default function Stats({ name, population, area, latitude, longitude }) {
 }
 
 Stats.propTypes = {
-  name: PropTypes.string,
-  population: PropTypes.number,
-  area: PropTypes.number,
-  latitude: PropTypes.number,
-  longitude: PropTypes.number,
+  name: PropTypes.string.isRequired,
+  population: PropTypes.number.isRequired,
+  area: PropTypes.number.isRequired,
+  latitude: PropTypes.number.isRequired,
+  longitude: PropTypes.number.isRequired,
 };

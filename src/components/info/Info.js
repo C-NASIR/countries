@@ -28,11 +28,11 @@ function Info({ name, capital, region, demonym, subregion }) {
 }
 
 Info.propTypes = {
-  name: PropTypes.string,
-  capital: PropTypes.string,
-  region: PropTypes.string,
-  demonym: PropTypes.string,
-  subregion: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  capital: PropTypes.string.isRequired,
+  region: PropTypes.string.isRequired,
+  demonym: PropTypes.string.isRequired,
+  subregion: PropTypes.string.isRequired,
 };
 
 export default Info;

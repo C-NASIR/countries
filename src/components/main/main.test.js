@@ -15,7 +15,8 @@ describe("Main component", () => {
   it("should render main component", () => checker(comp, "main", expect));
   it("should not throw an error", () => {
     const expectedProps = {
-      flagUrl: "flaglogo",
+      flag: "flaglogo",
+      name: "cdjcndc",
     };
     const propError = checkProps(Main, expectedProps);
     expect(propError).toBeUndefined();

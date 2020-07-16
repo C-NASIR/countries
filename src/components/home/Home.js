@@ -3,26 +3,21 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
-import Header from "../header/Header";
 import Main from "../main/Main";
 import Stats from "../stats/Stats";
 import Info from "../info/Info";
 
 const useStyles = makeStyles(() => ({
   root: {
-    width: "90%",
-    margin: "auto",
+    marginBottom: "20px",
   },
 }));
 
-export default function Home({ name }) {
+export default function Home({ country }) {
   const classes = useStyles();
-  console.log("This shoudl work ", name);
   return (
     <div data-test="home" className={classes.root}>
-      <Header data-test="header" />
       <Grid>
         <Grid item>
           <Card>
@@ -34,24 +29,30 @@ export default function Home({ name }) {
                 alignItems="stretch"
               >
                 <Grid item>
-                  <Stats data-test="stats" />
+                  <Stats
+                    data-test="stats"
+                    name={country.name}
+                    population={country.population}
+                    area={country.population}
+                    latitude={country.latitude}
+                    longitude={country.longitude}
+                  />
                 </Grid>
                 <Grid item>
-                  <Main data-test="main" />
-                  <CardMedia
-                    className={classes.media}
-                    // image={country.flag}
-                    title="Paella dish"
+                  <Main
+                    data-test="main"
+                    name={country.name}
+                    flag={country.flag}
                   />
                 </Grid>
                 <Grid item>
                   <Info
                     data-test="info"
-                    // name={country.name}
-                    // capital={country.capital}
-                    // region={country.region}
-                    // demonym={country.demonym}
-                    // subregion={country.subregion}
+                    name={country.name}
+                    capital={country.capital}
+                    region={country.region}
+                    demonym={country.demonym}
+                    subregion={country.subregion}
                   />
                 </Grid>
               </Grid>
@@ -64,12 +65,16 @@ export default function Home({ name }) {
 }
 
 Home.propTypes = {
-  // country: PropTypes.shape({
-  //   name: PropTypes.string,
-  //   flag: PropTypes.string.isRequired,
-  //   gender: PropTypes.oneOf(["M", "F"]),
-  //   birthdate: PropTypes.instanceOf(Date),
-  //   isAuthor: PropTypes.bool,
-  // }),
-  name: PropTypes.string.isRequired,
+  country: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    flag: PropTypes.string.isRequired,
+    capital: PropTypes.string.isRequired,
+    region: PropTypes.string.isRequired,
+    demonym: PropTypes.string.isRequired,
+    subregion: PropTypes.string.isRequired,
+    population: PropTypes.number.isRequired,
+    area: PropTypes.number.isRequired,
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired,
+  }),
 };
