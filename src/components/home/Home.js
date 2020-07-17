@@ -34,8 +34,8 @@ export default function Home({ country }) {
                     name={country.name}
                     population={country.population}
                     area={country.population}
-                    latitude={country.latitude}
-                    longitude={country.longitude}
+                    latitude={country.latlng[0]}
+                    longitude={country.latlng[1]}
                   />
                 </Grid>
                 <Grid item>
@@ -73,8 +73,8 @@ Home.propTypes = {
     demonym: PropTypes.string.isRequired,
     subregion: PropTypes.string.isRequired,
     population: PropTypes.number.isRequired,
-    area: PropTypes.number.isRequired,
-    latitude: PropTypes.number.isRequired,
-    longitude: PropTypes.number.isRequired,
+    area: PropTypes.number,
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
   }),
 };
