@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -16,6 +17,8 @@ const useStyles = makeStyles(() => ({
 
 export default function Dashboard({ country }) {
   const classes = useStyles();
+  const theme = useTheme();
+  const matchS = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <div data-test="home" className={classes.root}>
       <Grid>
@@ -24,7 +27,7 @@ export default function Dashboard({ country }) {
             <CardContent>
               <Grid
                 container
-                direction="row"
+                direction={matchS ? "column" : "row"}
                 justify="space-around"
                 alignItems="stretch"
               >

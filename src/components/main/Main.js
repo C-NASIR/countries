@@ -2,13 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
-  root: {},
+const useStyles = makeStyles((theme) => ({
+  root: {
+    [theme.breakpoints.down("sm")]: {
+      textAlign: "center",
+    },
+  },
   title: {
     marginTop: 0,
     textAlign: "center",
   },
-});
+}));
 
 export default function Main({ flag, name }) {
   const classes = useStyles();

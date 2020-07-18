@@ -2,15 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     height: "100%",
+    [theme.breakpoints.down("sm")]: {
+      textAlign: "center",
+    },
   },
   title: {
     marginTop: 0,
     textAlign: "center",
   },
-});
+}));
 
 function Info({ name, capital, region, demonym, subregion }) {
   const classes = useStyles();

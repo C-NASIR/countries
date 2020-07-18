@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import InputBase from "@material-ui/core/InputBase";
+import KeyboardEventHandler from "react-keyboard-event-handler";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -24,21 +24,34 @@ export default function Header({ setFilter }) {
   const [value, setValue] = useState("");
   const classes = useStyles();
 
+  const capitlize = (str) => {
+    if (value.length > 1) {
+      const strArray = value.toLowerCase().split("");
+      strArray[0] = strArray[0].toUpperCase();
+      return strArray.join("");
+    }
+    return value.toUpperCase();
+  };
+
   const handleSubmit = () => {
-    setFilter(value);
+    setFilter(capitlize(value));
+    setValue("");
   };
   return (
     <header data-test="header" className={classes.root}>
-      <InputBase
-        data-test="search"
-        className={classes.inputBase}
-        placeholder="Search Your Country ...."
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-      <Button onClick={handleSubmit} variant="contained" color="primary">
-        Search
-      </Button>
+      <KeyboardEventHandler
+        handleKeys={["return"]}
+        onKeyEvent={() => handleSubmit()}
+        style={{ width: "100%" }}
+      >
+        <InputBase
+          className={classes.inputBase}
+          placeholder="Search Your Country ...."
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          onClick={handleSubmit}
+        />
+      </KeyboardEventHandler>
     </header>
   );
 }
