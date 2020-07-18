@@ -32,21 +32,40 @@ export default function Dashboard({ country }) {
                 alignItems="stretch"
               >
                 <Grid item>
-                  <Stats
-                    data-test="stats"
-                    name={country.name}
-                    population={country.population}
-                    area={country.population}
-                    latitude={country.latlng[0]}
-                    longitude={country.latlng[1]}
-                  />
+                  {matchS ? (
+                    <Main
+                      data-test="main"
+                      name={country.name}
+                      flag={country.flag}
+                    />
+                  ) : (
+                    <Stats
+                      data-test="stats"
+                      name={country.name}
+                      population={country.population}
+                      area={country.population}
+                      latitude={country.latlng[0]}
+                      longitude={country.latlng[1]}
+                    />
+                  )}
                 </Grid>
                 <Grid item>
-                  <Main
-                    data-test="main"
-                    name={country.name}
-                    flag={country.flag}
-                  />
+                  {matchS ? (
+                    <Stats
+                      data-test="stats"
+                      name={country.name}
+                      population={country.population}
+                      area={country.population}
+                      latitude={country.latlng[0]}
+                      longitude={country.latlng[1]}
+                    />
+                  ) : (
+                    <Main
+                      data-test="main"
+                      name={country.name}
+                      flag={country.flag}
+                    />
+                  )}
                 </Grid>
                 <Grid item>
                   <Info
